@@ -8,15 +8,7 @@
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar">
-    <div class="logo"><img src="{{ asset('images/image_3.png') }}" alt="Logo" class="logo"> Gamon</div>
-    <ul>
-        <li>Beranda</li>
-        <li>About Us</li>
-        <li>Booking</li>
-        <li>Profil</li>
-    </ul>
-</nav>
+@include('layouts.navbar')
 
 <!-- HERO SECTION -->
 <section class="hero">
