@@ -26,7 +26,7 @@
                 <p>Kami hadir untuk membantu masyarakat lebih baik dalam mengolah lingkungan.</p>
             </div>
 
-            <a href="#" class="btn-primary">Setor Sekarang →</a>
+            <a href="{{ route('booking.page') }}" class="btn-primary">Setor Sekarang →</a>
         </div>
     </div>
 </section>
@@ -53,15 +53,6 @@
     </div>
 </section>
 
-<!-- IMPLEMENTASI -->
-<section class="implementation">
-    <h2>Implementasi Pengolahan Minyak Jelantah dan Sampah Plastik</h2>
-    <p>Berikut adalah video untuk mengolah sampah menjadi produk yang bermanfaat.</p>
-
-    <div class="video-preview">
-        ▶
-    </div>
-</section>
-
+@include('layouts.footer')
 </body>
 </html>

@@ -406,75 +406,6 @@ body {
     max-width: 100%;
 }
 
-/* ── IMPLEMENTATION ──────────────────────────── */
-.implementation {
-    background: var(--green-light);
-    padding: 72px 40px 0;
-    text-align: center;
-}
-
-.implementation h2 {
-    font-family: 'Sora', sans-serif;
-    font-size: clamp(1.3rem, 2.8vw, 2rem);
-    font-weight: 700;
-    color: var(--text-dark);
-    max-width: 600px;
-    margin: 0 auto 14px;
-    line-height: 1.3;
-}
-
-.implementation > p {
-    font-size: 0.88rem;
-    color: var(--text-gray);
-    max-width: 480px;
-    margin: 0 auto 40px;
-    line-height: 1.7;
-}
-
-.video-preview {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    height: 380px;
-    border-radius: 16px 16px 0 0;
-    overflow: hidden;
-    background:
-        linear-gradient(rgba(15,40,10,0.50), rgba(10,30,8,0.65)),
-        url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=900') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 -4px 40px rgba(0,0,0,0.15);
-    transition: box-shadow 0.3s;
-}
-
-.video-preview:hover {
-    box-shadow: 0 -4px 55px rgba(0,0,0,0.22);
-}
-
-.video-preview::before {
-    content: '▶';
-    font-size: 2rem;
-    color: var(--white);
-    width: 70px;
-    height: 70px;
-    background: rgba(255,255,255,0.15);
-    border: 2px solid rgba(255,255,255,0.55);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(4px);
-    transition: background 0.25s, transform 0.25s;
-    padding-left: 4px;
-}
-
-.video-preview:hover::before {
-    background: rgba(78,154,66,0.55);
-    transform: scale(1.08);
-}
-
 /* ── RESPONSIVE ──────────────────────────────── */
 @media (max-width: 768px) {
     .navbar {
@@ -521,5 +452,86 @@ body {
 
     .video-preview {
         height: 240px;
+    }
+}
+
+/* FOOTER */
+.site-footer {
+    background: #d6e8c8;
+    padding: 48px 60px;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 2fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* ── BRAND ────────────────────────────────────── */
+.footer-brand h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.footer-brand p {
+    font-size: 0.84rem;
+    color: #4a5a44;
+    line-height: 1.65;
+    max-width: 220px;
+}
+
+/* ── COLUMNS ──────────────────────────────────── */
+.footer-col h4 {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+}
+
+.footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-col ul li {
+    font-size: 0.84rem;
+    color: #4a5a44;
+    line-height: 1.55;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: #4a5a44;
+    transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--green-btn);
+}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 40px 24px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .footer-brand p {
+        max-width: 100%;
     }
 }

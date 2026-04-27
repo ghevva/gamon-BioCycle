@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
 
 // HOME
 Route::get('/', function () {
@@ -27,3 +28,12 @@ Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
 
 // LOGOUT
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// BOOKING
+Route::resource('booking', BookingController::class);
+Route::get('/booking-page', [BookingController::class, 'bookingPage'])->name('booking.page');
+
+//ABOUT
+Route::get('/about', function () {
+    return view('about');
+})->name('about.page');

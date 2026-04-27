@@ -85,3 +85,106 @@ button {
 button:hover {
     background-color: #c82333;
 }
+
+/* ============================================
+   BioCycle - admin-navbar.css
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --green-dark:   #1a3a1a;
+    --green-mid:    #2d5a27;
+    --green-accent: #4a8c3f;
+    --green-btn:    #3d7a35;
+    --green-light:  #e8f5e1;
+    --white:        #ffffff;
+    --text-dark:    #1a1a1a;
+    --text-gray:    #555;
+    --radius:       12px;
+}
+
+/* ── NAVBAR ───────────────────────────────────── */
+.admin-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 36px;
+    height: 62px;
+    background: #12230f;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+}
+
+/* ── LOGO / BRAND ─────────────────────────────── */
+.admin-logo {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.02em;
+}
+
+/* ── MENU ─────────────────────────────────────── */
+.admin-navbar ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.admin-navbar ul li a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.70);
+    padding: 7px 16px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+    letter-spacing: 0.01em;
+}
+
+.admin-navbar ul li a:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
+}
+
+/* Logout link — merah saat hover */
+.admin-navbar ul li:last-child a:hover {
+    background: rgba(192,57,43,0.18);
+    color: #f0a09a;
+}
+
+/* ── OFFSET BODY ──────────────────────────────── */
+.admin-body {
+    padding-top: 62px;
+}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 600px) {
+    .admin-navbar {
+        padding: 0 16px;
+    }
+
+    .admin-navbar ul {
+        gap: 2px;
+    }
+
+    .admin-navbar ul li a {
+        font-size: 0.78rem;
+        padding: 6px 10px;
+    }
+}

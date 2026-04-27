@@ -5,12 +5,22 @@
     </div>
 
     <ul>
-        <li><a href="/">Beranda</a></li>
-        <li>About Us</li>
-        <li>Booking</li>
+        <li><a href="/">Home Page</a></li>
+
+        <li>
+            <a href="{{ route('about.page') }}">
+                About Us
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('booking.page') }}">
+                Booking
+            </a>
+        </li>
 
         @if(session('user'))
-            <li><a href="/profile">Profil</a></li>
+            <li><a href="/profile">Profile</a></li>
             <li><a href="/logout">Logout</a></li>
         @else
             <li><a href="/login">Login</a></li>

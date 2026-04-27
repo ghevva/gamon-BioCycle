@@ -1,0 +1,236 @@
+/* ============================================
+   BioCycle - booking.css
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+/* ── BOOKING PAGE BODY ────────────────────────── */
+body {
+    background: #f2f5f0;
+}
+
+/* ── HERO SECTION (background foto) ──────────── */
+.booking-hero {
+    min-height: 55vh;
+    padding-top: 62px;
+    background:
+        linear-gradient(to bottom, rgba(10,26,10,0.65) 0%, rgba(20,45,18,0.50) 100%),
+        url('/images/image_1.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+/* ── PILIH JENIS CARD ─────────────────────────── */
+.booking-selector {
+    background: rgba(232, 245, 225, 0.92);
+    border: 2px solid rgba(100,180,80,0.40);
+    border-radius: 16px;
+    padding: 20px 24px 24px;
+    width: 100%;
+    max-width: 520px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+.booking-selector h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+}
+
+/* ── PILIHAN GRID ─────────────────────────────── */
+.booking-choices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.booking-choice {
+    display: block;
+    text-decoration: none;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    background: var(--white);
+}
+
+.booking-choice:hover {
+    border-color: var(--green-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(50,120,40,0.22);
+}
+
+.booking-choice img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+
+.booking-choice-label {
+    background: #1a1a18;
+    color: var(--white);
+    font-family: 'Sora', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px 8px;
+    letter-spacing: 0.03em;
+}
+
+/* ── FEATURES BAR (sudah di home.css, ini override warna bg) ── */
+
+/* ── RIWAYAT SECTION ──────────────────────────── */
+.booking-history {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 36px 20px 60px;
+}
+
+.booking-history-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.booking-history-header h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.booking-history-header span {
+    font-size: 0.80rem;
+    color: var(--text-gray);
+    cursor: pointer;
+}
+
+/* ── BOOKING CARD ─────────────────────────────── */
+.booking-card {
+    background: var(--white);
+    border-radius: 14px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.booking-card:hover {
+    box-shadow: 0 6px 24px rgba(50,120,40,0.13);
+    transform: translateY(-2px);
+}
+
+/* Label jenis di atas card */
+.booking-card-type {
+    background: var(--green-light);
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #d8edcf;
+}
+
+.booking-card-type .type-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--green-accent);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-family: 'Sora', sans-serif;
+}
+
+.booking-card-type .type-value {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-family: 'Sora', sans-serif;
+}
+
+/* Body card */
+.booking-card-body {
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.booking-field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.booking-field-label {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: 0.01em;
+}
+
+.booking-field-value {
+    font-size: 0.88rem;
+    color: var(--text-gray);
+    font-weight: 400;
+}
+
+/* Status badge (opsional) */
+.booking-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-family: 'Sora', sans-serif;
+    padding: 3px 10px;
+    border-radius: 50px;
+    background: #fff8e1;
+    color: #b58a00;
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+    align-self: flex-start;
+}
+
+/* Empty state */
+.booking-empty {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--text-gray);
+    font-size: 0.90rem;
+}
+
+.booking-empty span {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 560px) {
+    .booking-hero {
+        min-height: 60vh;
+        padding: 80px 16px 32px;
+    }
+
+    .booking-selector {
+        padding: 16px 14px 20px;
+    }
+
+    .booking-choice img {
+        height: 110px;
+    }
+
+    .booking-history {
+        padding: 28px 16px 50px;
+    }
+}

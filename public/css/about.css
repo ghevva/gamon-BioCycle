@@ -1,0 +1,246 @@
+/* ============================================
+   BioCycle - about.css
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --green-dark:   #1a3a1a;
+    --green-mid:    #2d5a27;
+    --green-accent: #4a8c3f;
+    --green-btn:    #3d7a35;
+    --green-light:  #e8f5e1;
+    --white:        #ffffff;
+    --text-dark:    #1a1a1a;
+    --text-gray:    #555;
+    --radius:       12px;
+}
+
+/* ── HERO SECTION ─────────────────────────────── */
+.about-hero {
+    min-height: 100vh;
+    padding-top: 62px;
+    background:
+        linear-gradient(to bottom, rgba(10,26,10,0.70) 0%, rgba(20,45,18,0.55) 60%, rgba(8,20,8,0.80) 100%),
+        url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 48px;
+}
+
+/* ── TENTANG KAMI CARD ────────────────────────── */
+.about-card {
+    width: 100%;
+    max-width: 560px;
+    border: 2px solid rgba(100,200,80,0.50);
+    border-radius: 16px;
+    padding: 28px 28px 32px;
+    background: rgba(20, 48, 16, 0.55);
+    backdrop-filter: blur(8px);
+    color: var(--white);
+}
+
+.about-card-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.90);
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.about-card-desc {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.65;
+    border: 1px dashed rgba(100,200,80,0.35);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+}
+
+/* Visi / Misi / Developer blocks */
+.about-block {
+    border: 1px dashed rgba(100,200,80,0.35);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+}
+
+.about-block:last-child {
+    margin-bottom: 0;
+}
+
+.about-block h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #a8d890;
+    margin-bottom: 10px;
+    letter-spacing: 0.03em;
+}
+
+.about-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0;
+}
+
+.about-block ul li {
+    font-size: 0.80rem;
+    color: rgba(255,255,255,0.80);
+    line-height: 1.55;
+    padding-left: 14px;
+    position: relative;
+}
+
+.about-block ul li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    font-size: 0.45rem;
+    color: #a8d890;
+    top: 5px;
+}
+
+/* ── FEATURES BAR (reuse home.css) ───────────── */
+
+/* ── WHY SECTION ──────────────────────────────── */
+.about-why {
+    background: var(--green-light);
+    padding: 72px 60px;
+}
+
+.about-why-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.about-why-img {
+    flex: 0 0 300px;
+    height: 360px;
+    border-radius: 16px;
+    background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600') center/cover no-repeat;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+}
+
+.about-why-text {
+    flex: 1;
+}
+
+.about-why-text h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.25;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+}
+
+.about-why-text ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.about-why-text ul li {
+    font-size: 0.88rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    padding-left: 18px;
+    position: relative;
+}
+
+.about-why-text ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--green-accent);
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.about-why-text h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+/* ── TAGLINE SECTION ──────────────────────────── */
+.about-tagline {
+    background: var(--white);
+    padding: 80px 60px;
+}
+
+.about-tagline-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.about-tagline h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    flex: 1;
+}
+
+.about-tagline p {
+    flex: 1;
+    font-size: 0.90rem;
+    color: var(--text-gray);
+    line-height: 1.75;
+    text-align: center;
+}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 80px 16px 40px;
+    }
+
+    .about-why {
+        padding: 50px 24px;
+    }
+
+    .about-why-inner {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .about-why-img {
+        width: 100%;
+        flex: none;
+        height: 240px;
+    }
+
+    .about-tagline {
+        padding: 56px 24px;
+    }
+
+    .about-tagline-inner {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+}
