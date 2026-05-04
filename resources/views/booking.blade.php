@@ -19,13 +19,13 @@
 
             <!-- Minyak Jelantah -->
             <a href="{{ route('booking.create') }}?type=minyak" class="booking-choice">
-                <img src="{{ asset('images/oil.jpg') }}" alt="Minyak Jelantah">
+                <img src="{{ asset('/images/image_5.png') }}" alt="Minyak Jelantah">
                 <div class="booking-choice-label">Minyak Jelantah</div>
             </a>
 
             <!-- Limbah Plastik -->
             <a href="{{ route('booking.create') }}?type=plastik" class="booking-choice">
-                <img src="{{ asset('images/plastic.jpg') }}" alt="Limbah Plastik">
+                <img src="{{ asset('/images/image_4.png') }}" alt="Limbah Plastik">
                 <div class="booking-choice-label">Limbah Plastik</div>
             </a>
 
