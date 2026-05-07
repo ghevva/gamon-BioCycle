@@ -29,6 +29,7 @@
                     <th>Nama</th>
                     <th>Email</th>
                     <th>Phone</th>
+                    <th>Poin</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -39,17 +40,21 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
+                        <td>{{ $user->points }}</td>
+
                         <td>
                             <a href="{{ route('user.edit', $user->id) }}">Edit</a>
 
                             |
-                            
-                            <form action="{{ route('user.destroy', $user->id) }}" 
-                                  method="POST" 
+
+                            <form action="{{ route('user.destroy', $user->id) }}"
+                                  method="POST"
                                   style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Yakin hapus?')">
+
+                                <button type="submit"
+                                        onclick="return confirm('Yakin hapus?')">
                                     Hapus
                                 </button>
                             </form>

@@ -32,17 +32,24 @@
                     <th>Tanggal</th>
                     <th>Jam</th>
                     <th>No Antrian</th>
+                    <th>Status</th>
+                    <th>Poin</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
+
             <tbody>
                 @foreach($bookings as $index => $b)
                     <tr>
+
                         <td>{{ $index + 1 }}</td>
+
                         <td>{{ $b->name }}</td>
 
                         <td>
-                            {{ $b->type == 'minyak' ? 'Minyak Jelantah' : 'Sampah Plastik' }}
+                            {{ $b->type == 'minyak'
+                                ? 'Minyak Jelantah'
+                                : 'Sampah Plastik' }}
                         </td>
 
                         <td>
@@ -54,27 +61,74 @@
                         </td>
 
                         <td>{{ $b->date }}</td>
+
                         <td>{{ $b->time }}</td>
+
                         <td>{{ $b->queue_number }}</td>
 
-                        <td>
-                            <a href="{{ route('booking.edit', $b->id) }}">Edit</a> |
+                        <td>{{ $b->status }}</td>
 
-                            <form action="{{ route('booking.destroy', $b->id) }}" 
-                                  method="POST" 
+                        <td>
+                            @if($b->final_amount)
+                                {{ $b->final_amount * 10 }} Poin
+                            @else
+                                -
+                            @endif
+                        </td>
+
+                        <td>
+
+                            {{-- FORM ACC --}}
+                            @if($b->status == 'pending')
+
+                            <form action="{{ route('booking.approve', $b->id) }}"
+                                  method="POST">
+
+                                @csrf
+
+                                <input type="number"
+                                       step="0.1"
+                                       name="final_amount"
+                                       placeholder="Final Kg/L"
+                                       required>
+
+                                <button type="submit">
+                                    ACC
+                                </button>
+
+                            </form>
+
+                            <br>
+
+                            @endif
+
+                            <a href="{{ route('booking.edit', $b->id) }}">
+                                Edit
+                            </a>
+
+                            |
+
+                            <form action="{{ route('booking.destroy', $b->id) }}"
+                                  method="POST"
                                   style="display:inline;">
+
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Yakin hapus?')">
+
+                                <button type="submit"
+                                        onclick="return confirm('Yakin hapus?')">
                                     Hapus
                                 </button>
+
                             </form>
+
                         </td>
 
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
     @else
         <p>Belum ada data booking.</p>
     @endif

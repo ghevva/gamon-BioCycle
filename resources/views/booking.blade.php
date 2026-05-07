@@ -51,15 +51,20 @@
     </div>
 
     @if($bookings->count())
+
         @foreach($bookings as $b)
+
         <div class="booking-card">
 
             <!-- Tipe di atas -->
             <div class="booking-card-type">
+
                 <span class="type-label">Jenis</span>
+
                 <span class="type-value">
                     {{ $b->type == 'minyak' ? 'Minyak Jelantah' : 'Limbah Plastik' }}
                 </span>
+
             </div>
 
             <!-- Detail -->
@@ -71,41 +76,87 @@
                 </div>
 
                 @if($b->type == 'minyak')
+
                 <div class="booking-field">
                     <span class="booking-field-label">Volume (Liter)</span>
-                    <span class="booking-field-value">{{ $b->volume }} liter</span>
+
+                    <span class="booking-field-value">
+                        {{ $b->volume }} liter
+                    </span>
                 </div>
+
                 @else
+
                 <div class="booking-field">
                     <span class="booking-field-label">Berat (Kg)</span>
-                    <span class="booking-field-value">{{ $b->weight }} kg</span>
+
+                    <span class="booking-field-value">
+                        {{ $b->weight }} kg
+                    </span>
                 </div>
+
                 @endif
 
                 <div class="booking-field">
-                    <span class="booking-field-label">Tanggal & Waktu Kedatangan</span>
-                    <span class="booking-field-value">{{ $b->date }} / Pukul {{ $b->time }} WIB.</span>
+                    <span class="booking-field-label">
+                        Tanggal & Waktu Kedatangan
+                    </span>
+
+                    <span class="booking-field-value">
+                        {{ $b->date }} / Pukul {{ $b->time }} WIB.
+                    </span>
                 </div>
 
                 <!-- NOMOR ANTRIAN -->
                 <div class="booking-field">
                     <span class="booking-field-label">Nomor Antrian</span>
-                    <span class="booking-field-value">#{{ $b->queue_number }}</span>
+
+                    <span class="booking-field-value">
+                        #{{ $b->queue_number }}
+                    </span>
                 </div>
 
+                <!-- STATUS POIN -->
+                @if($b->status == 'approved')
+
+                <div class="booking-field">
+                    <span class="booking-field-label">Poin Didapat</span>
+
+                    <span class="booking-field-value">
+                        +{{ $b->final_amount * 10 }} Poin ⭐
+                    </span>
+                </div>
+
+                @else
+
+                <div class="booking-field">
+                    <span class="booking-field-label">Status</span>
+
+                    <span class="booking-field-value">
+                        Menunggu ACC Admin
+                    </span>
+                </div>
+
+                @endif
+
             </div>
+
         </div>
+
         @endforeach
 
     @else
+
         <div class="booking-empty">
             <span>📭</span>
             Belum ada riwayat booking.
         </div>
+
     @endif
 
 </div>
 
 @include('layouts.footer')
+
 </body>
 </html>

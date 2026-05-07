@@ -20,8 +20,13 @@
         </li>
 
         @if(session('user'))
+
             <li><a href="/profile">Profile</a></li>
-            <li><a href="/logout">Logout</a></li>
+
+            <li class="points-nav">
+                ⭐ {{ session('user')->points ?? 0 }} Poin
+            </li>
+
         @else
             <li><a href="/login">Login</a></li>
             <li><a href="/register">Sign up</a></li>

@@ -32,6 +32,9 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // BOOKING
 Route::resource('booking', BookingController::class);
 Route::get('/booking-page', [BookingController::class, 'bookingPage'])->name('booking.page');
+Route::post('/booking/{booking}/approve',
+    [BookingController::class, 'approve']
+)->name('booking.approve');
 
 //ABOUT
 Route::get('/about', function () {

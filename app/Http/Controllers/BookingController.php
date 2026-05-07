@@ -115,6 +115,47 @@ class BookingController extends Controller
             ->with('success', 'Booking berhasil diupdate');
     }
 
+    // ================== APPROVE BOOKING ==================
+    public function approve(Request $request, Booking $booking)
+    {
+        // CEK BIAR GAK BISA ACC 2X
+        if ($booking->status == 'approved') {
+            return back()->with('error', 'Booking sudah di ACC');
+        }
+
+        $request->validate([
+            'final_amount' => 'required|numeric|min:1'
+        ]);
+
+        // HITUNG POIN
+        $points = $request->final_amount * 10;
+
+        // UPDATE BOOKING
+        $booking->status = 'approved';
+        $booking->final_amount = $request->final_amount;
+        $booking->save();
+
+        // AMBIL USER
+        $user = \App\Models\User::find($booking->user_id);
+
+        // TAMBAH POIN USER
+        if ($user) {
+
+            $user->points += $points;
+            $user->save();
+
+            // REFRESH SESSION
+            if (session('user') && session('user')->id == $user->id) {
+                session(['user' => $user->fresh()]);
+            }
+        }
+
+        return back()->with(
+            'success',
+            'Booking berhasil di ACC & poin berhasil ditambahkan'
+        );
+    }
+
     // ================== HAPUS ==================
     public function destroy(Booking $booking)
     {
