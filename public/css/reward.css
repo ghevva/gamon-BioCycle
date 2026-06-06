@@ -1,0 +1,270 @@
+/* ============================================
+   BioCycle - reward.css
+   ============================================ */
+
+/* ── PAGE WRAPPER ─────────────────────────────── */
+.reward-page {
+    min-height: 100vh;
+    background: #f2f5f0;
+}
+
+/* ── HEADER SECTION ───────────────────────────── */
+.reward-header {
+    background:
+        linear-gradient(to bottom, rgba(10,26,10,0.75) 0%, rgba(20,45,18,0.65) 100%),
+        url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200') center/cover no-repeat;
+    padding: 100px 24px 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.reward-header h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.02em;
+}
+
+.reward-header > p {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 360px;
+    line-height: 1.6;
+}
+
+/* ── POINT CARD ───────────────────────────────── */
+.point-card {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 20px 48px;
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.point-card span {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.point-card h2 {
+    font-family: 'Sora', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #a8d890;
+    letter-spacing: -0.02em;
+}
+
+/* ── SUCCESS ALERT ────────────────────────────── */
+.reward-header p[style] {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    border-radius: var(--radius);
+    padding: 10px 20px;
+    background: rgba(168,216,144,0.20);
+    border: 1px solid rgba(168,216,144,0.45);
+    color: #a8d890 !important;
+}
+
+/* ── PRODUCT GRID ─────────────────────────────── */
+.reward-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 48px 28px 72px;
+}
+
+/* ── PRODUCT CARD ─────────────────────────────── */
+.reward-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s, box-shadow 0.25s;
+    padding: 0;
+}
+
+.reward-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 36px rgba(50,120,40,0.15);
+}
+
+.reward-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+}
+
+.reward-card h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    padding: 16px 18px 6px;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.reward-card p {
+    font-size: 0.84rem;
+    color: var(--text-gray);
+    padding: 0 18px;
+    line-height: 1.55;
+    flex: 1;
+    margin: 0 0 4px;
+}
+
+.reward-card p strong {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.92rem;
+    color: var(--green-accent);
+    font-weight: 700;
+}
+
+.reward-card p strong::before {
+    content: '🌿';
+    font-size: 0.85rem;
+}
+
+/* ── TUKAR BUTTON ─────────────────────────────── */
+.reward-card a {
+    display: block;
+    text-align: center;
+    margin: 14px 18px 18px;
+    padding: 11px 0;
+    background: var(--green-btn);
+    color: var(--white);
+    font-family: 'Sora', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 3px 12px rgba(50,120,40,0.22);
+    box-sizing: border-box;
+    width: auto;
+}
+
+.reward-card a:hover {
+    background: #4e9a42;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(50,120,40,0.32);
+    opacity: 1;
+}
+
+/* ── MODAL ERROR ──────────────────────────────── */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    backdrop-filter: blur(3px);
+}
+
+.modal-box {
+    background: var(--white);
+    width: 400px;
+    max-width: 90%;
+    padding: 32px 28px 28px;
+    border-radius: 20px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.20);
+    animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(16px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-box h3 {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #c0392b;
+    margin-bottom: 12px;
+}
+
+.modal-box h3::before {
+    content: '⚠️ ';
+}
+
+.modal-box p {
+    font-size: 0.90rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: #c0392b;
+}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 600px) {
+    .reward-header {
+        padding: 80px 20px 48px;
+    }
+
+    .point-card {
+        padding: 16px 36px;
+    }
+
+    .reward-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        padding: 32px 16px 56px;
+    }
+
+    .reward-card img {
+        height: 130px;
+    }
+}
+
+@media (max-width: 400px) {
+    .reward-grid {
+        grid-template-columns: 1fr;
+    }
+}

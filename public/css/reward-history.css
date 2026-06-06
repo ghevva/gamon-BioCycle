@@ -1,0 +1,151 @@
+/* ============================================
+   BioCycle - reward-history.css
+   ============================================ */
+
+/* ── PAGE BODY ────────────────────────────────── */
+body {
+    background: #f2f5f0;
+}
+
+/* ── PAGE WRAPPER ─────────────────────────────── */
+.history-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 100px 28px 80px;
+}
+
+/* ── PAGE TITLE ───────────────────────────────── */
+.history-wrapper h1 {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+}
+
+/* ── TABLE CARD ───────────────────────────────── */
+.history-table-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* ── TABLE ────────────────────────────────────── */
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.history-table thead {
+    background: linear-gradient(135deg, var(--green-mid), var(--green-accent));
+}
+
+.history-table thead th {
+    font-family: 'Sora', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 14px 22px;
+    text-align: left;
+}
+
+.history-table tbody tr {
+    border-bottom: 1px solid #eef3ec;
+    transition: background 0.15s;
+}
+
+.history-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.history-table tbody tr:hover {
+    background: #f7faf6;
+}
+
+.history-table td {
+    padding: 14px 22px;
+    font-size: 0.90rem;
+    color: var(--text-dark);
+    vertical-align: middle;
+}
+
+/* Kolom poin — hijau & bold */
+.history-table td:nth-child(2) {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    color: var(--green-accent);
+}
+
+/* Kolom tanggal — abu lebih kecil */
+.history-table td:nth-child(4) {
+    font-size: 0.82rem;
+    color: var(--text-gray);
+}
+
+/* ── STATUS BADGE ─────────────────────────────── */
+.history-table td span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    padding: 4px 12px;
+    border-radius: 50px;
+    letter-spacing: 0.04em;
+}
+
+/* Override inline style pending */
+.history-table td span[style*="ff9800"],
+.history-table td span[style*="orange"] {
+    background: #fff3e0 !important;
+    color: #e65100 !important;
+    border: 1px solid #ffcc80;
+}
+
+/* Override inline style sukses */
+.history-table td span[style*="green"] {
+    background: var(--green-light) !important;
+    color: var(--green-btn) !important;
+    border: 1px solid #b6d9a0;
+}
+
+/* ── EMPTY STATE ──────────────────────────────── */
+.history-empty {
+    text-align: center;
+    padding: 56px 20px;
+}
+
+.history-empty span {
+    display: block;
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+}
+
+.history-empty p {
+    font-size: 0.90rem;
+    color: var(--text-gray);
+}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 600px) {
+    .history-wrapper {
+        padding: 80px 16px 60px;
+    }
+
+    .history-table thead th,
+    .history-table td {
+        padding: 12px 14px;
+        font-size: 0.82rem;
+    }
+
+    /* Sembunyikan kolom tanggal di mobile */
+    .history-table thead th:nth-child(4),
+    .history-table td:nth-child(4) {
+        display: none;
+    }
+}

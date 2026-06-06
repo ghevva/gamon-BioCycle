@@ -123,7 +123,7 @@
                     <span class="booking-field-label">Poin Didapat</span>
 
                     <span class="booking-field-value">
-                        +{{ $b->final_amount * 10 }} Poin ⭐
+                        +{{ $b->final_amount * 5 }} poin ⭐
                     </span>
                 </div>
 

@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\RewardController;
+use App\Http\Controllers\RedemptionController;
+use App\Models\Product;
 
 // HOME
 Route::get('/', function () {
@@ -40,3 +43,62 @@ Route::post('/booking/{booking}/approve',
 Route::get('/about', function () {
     return view('about');
 })->name('about.page');
+
+//REWARD
+Route::get('/reward', [RewardController::class, 'index'])
+    ->name('reward.index');
+
+Route::post('/reward/{id}', [RewardController::class, 'redeem'])
+    ->name('reward.redeem');
+
+//PRODUCTS
+Route::resource('product', RewardController::class);
+
+Route::get('/product', [RewardController::class, 'productIndex'])
+    ->name('product.index');
+
+Route::get('/product/create', [RewardController::class, 'create'])
+    ->name('product.create');
+
+Route::post('/product', [RewardController::class, 'store'])
+    ->name('product.store');
+
+Route::get('/product/{product}/edit', [RewardController::class, 'edit'])
+    ->name('product.edit');
+
+Route::put('/product/{product}', [RewardController::class, 'update'])
+    ->name('product.update');
+
+Route::delete('/product/{product}', [RewardController::class, 'destroy'])
+    ->name('product.destroy');
+
+Route::get('/api/products', function () {
+    return Product::all();
+});
+
+//PENUKARAN
+Route::get('/reward/verify/{id}', [RewardController::class, 'verify'])
+    ->name('reward.verify');
+
+Route::post('/reward/confirm/{id}', [RewardController::class, 'confirm'])
+    ->name('reward.confirm');
+
+Route::get(
+    '/reward-success',
+    [RewardController::class, 'success']
+)->name('reward.success');
+
+Route::get(
+    '/reward-history',
+    [RewardController::class, 'history']
+)->name('reward.history');
+
+Route::get(
+    '/redemptions',
+    [RedemptionController::class, 'index']
+)->name('redemption.index');
+
+Route::post(
+    '/redemptions/{redemption}/complete',
+    [RedemptionController::class, 'complete']
+)->name('redemption.complete');

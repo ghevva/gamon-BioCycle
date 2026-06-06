@@ -70,7 +70,7 @@
 
                         <td>
                             @if($b->final_amount)
-                                {{ $b->final_amount * 10 }} Poin
+                                {{ $b->final_amount * 5 }} poin
                             @else
                                 -
                             @endif

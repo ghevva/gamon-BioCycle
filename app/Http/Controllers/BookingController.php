@@ -128,7 +128,7 @@ class BookingController extends Controller
         ]);
 
         // HITUNG POIN
-        $points = $request->final_amount * 10;
+        $points = $request->final_amount * 5;
 
         // UPDATE BOOKING
         $booking->status = 'approved';

@@ -5,11 +5,11 @@
     </div>
 
     <ul>
-        <li><a href="/">Home Page</a></li>
+        <li><a href="/">Beranda</a></li>
 
         <li>
             <a href="{{ route('about.page') }}">
-                About Us
+                Informasi
             </a>
         </li>
 
@@ -19,9 +19,17 @@
             </a>
         </li>
 
+        <li class="nav-dropdown" onclick="toggleDropdown(this)">
+            <a href="#">Tukar Poin ▾</a>
+            <ul class="nav-dropdown-menu">
+                <li><a href="{{ route('reward.index') }}">Tukar Poin</a></li>
+                <li><a href="{{ route('reward.history') }}">Riwayat Penukaran</a></li>
+            </ul>
+        </li>
+
         @if(session('user'))
 
-            <li><a href="/profile">Profile</a></li>
+            <li><a href="/profile">Profil</a></li>
 
             <li class="points-nav">
                 ⭐ {{ session('user')->points ?? 0 }} Poin
@@ -33,3 +41,18 @@
         @endif
     </ul>
 </nav>
+
+<script>
+function toggleDropdown(el) {
+    const menu = el.querySelector('.nav-dropdown-menu');
+    const isOpen = menu.classList.contains('open');
+    document.querySelectorAll('.nav-dropdown-menu.open').forEach(m => m.classList.remove('open'));
+    if (!isOpen) menu.classList.add('open');
+}
+
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) {
+        document.querySelectorAll('.nav-dropdown-menu.open').forEach(m => m.classList.remove('open'));
+    }
+});
+</script>

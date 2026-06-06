@@ -535,3 +535,72 @@ body {
         max-width: 100%;
     }
 }
+
+/* ── NAVBAR DROPDOWN (Tukar Poin) ─────────────── */
+/* Tempel di bagian paling bawah home.css         */
+
+.nav-dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+/* HIDDEN BY DEFAULT */
+.nav-dropdown-menu {
+    display: none !important;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(18, 35, 15, 0.97);
+    border: 1px solid rgba(100,180,80,0.20);
+    border-radius: 10px;
+    padding: 6px;
+    min-width: 200px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+    list-style: none;
+    z-index: 200;
+    backdrop-filter: blur(8px);
+}
+
+/* Muncul saat .open */
+.nav-dropdown-menu.open {
+    display: block !important;
+    animation: dropIn 0.18s ease;
+}
+
+@keyframes dropIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Reset li bawaan navbar */
+.nav-dropdown-menu li {
+    color: unset !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    font-size: unset !important;
+}
+
+.nav-dropdown-menu li a {
+    display: block;
+    padding: 10px 16px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85) !important;
+    text-decoration: none;
+    border-radius: 7px;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+}
+
+.nav-dropdown-menu li a:hover {
+    background: rgba(74,140,63,0.25);
+    color: #a8d890 !important;
+}
+
+/* Divider antar opsi */
+.nav-dropdown-menu li:not(:last-child) {
+    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+}
