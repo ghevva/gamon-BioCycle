@@ -8,6 +8,32 @@
     background: #f2f5f0;
 }
 
+/* ══════════════════════════════════════════════
+   SLIDE-UP REVEAL — "efek laci"
+   Semua elemen yang punya class .reveal
+   mulai tersembunyi di bawah, lalu naik masuk.
+   ══════════════════════════════════════════════ */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delay untuk card dalam grid */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
+.reveal-delay-7 { transition-delay: 0.7s; }
+.reveal-delay-8 { transition-delay: 0.8s; }
+
 /* ── HEADER SECTION ───────────────────────────── */
 .reward-header {
     background:
@@ -19,6 +45,7 @@
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    overflow: hidden; /* clip animasi header agar tidak overflow */
 }
 
 .reward-header h1 {
@@ -102,9 +129,11 @@
 }
 
 .reward-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 36px rgba(50,120,40,0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(50,120,40,0.18);
 }
+
+
 
 .reward-card img {
     width: 100%;

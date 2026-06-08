@@ -12,6 +12,14 @@ class RewardController extends Controller
     // ================== HALAMAN USER ==================
     public function index()
     {
+        if (!session()->has('user')) {
+            return redirect('/login')
+                ->with(
+                    'error',
+                    'Silakan login terlebih dahulu'
+                );
+        }
+
         $products = Product::all();
 
         return view('reward', compact('products'));
@@ -20,6 +28,14 @@ class RewardController extends Controller
     // ================== HALAMAN VERIFIKASI ==================
     public function verify($id)
     {
+        if (!session()->has('user')) {
+            return redirect('/login')
+                ->with(
+                    'error',
+                    'Silakan login terlebih dahulu'
+                );
+        }
+
         $user = User::find(session('user')->id);
 
         $product = Product::findOrFail($id);
@@ -36,6 +52,10 @@ class RewardController extends Controller
     // ================== KONFIRMASI PENUKARAN ==================
     public function confirm($id)
     {
+        if (!session()->has('user')) {
+            return redirect('/login');
+        }
+
         $user = User::find(session('user')->id);
 
         $product = Product::findOrFail($id);
@@ -59,7 +79,7 @@ class RewardController extends Controller
             'status' => 'pending'
         ]);
 
-        // REFRESH SESSION USER
+        // REFRESH SESSION
         $updatedUser = User::find($user->id);
 
         session()->forget('user');
@@ -76,6 +96,10 @@ class RewardController extends Controller
     // ================== HALAMAN SUKSES ==================
     public function success()
     {
+        if (!session()->has('user')) {
+            return redirect('/login');
+        }
+
         return view('reward-success');
     }
 
@@ -83,7 +107,6 @@ class RewardController extends Controller
     public function history()
     {
         if (!session()->has('user')) {
-
             return redirect('/login')
                 ->with(
                     'error',
@@ -102,23 +125,45 @@ class RewardController extends Controller
         );
     }
 
-    // ================== ADMIN PANEL ==================
+    // =====================================================
+    // ================== ADMIN PANEL =======================
+    // =====================================================
+
     public function productIndex()
     {
+        if (
+            !session()->has('user') ||
+            session('user')->role != 'admin'
+        ) {
+            return redirect('/');
+        }
+
         $products = Product::latest()->get();
 
         return view('product.index', compact('products'));
     }
 
-    // ================== FORM CREATE ==================
     public function create()
     {
+        if (
+            !session()->has('user') ||
+            session('user')->role != 'admin'
+        ) {
+            return redirect('/');
+        }
+
         return view('product.create');
     }
 
-    // ================== SIMPAN PRODUCT ==================
     public function store(Request $request)
     {
+        if (
+            !session()->has('user') ||
+            session('user')->role != 'admin'
+        ) {
+            return redirect('/');
+        }
+
         Product::create([
             'name' => $request->name,
             'points' => $request->points,
@@ -126,19 +171,40 @@ class RewardController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('product.index')
-            ->with('success', 'Produk berhasil ditambahkan');
+        return redirect()
+            ->route('product.index')
+            ->with(
+                'success',
+                'Produk berhasil ditambahkan'
+            );
     }
 
-    // ================== FORM EDIT ==================
     public function edit(Product $product)
     {
-        return view('product.edit', compact('product'));
+        if (
+            !session()->has('user') ||
+            session('user')->role != 'admin'
+        ) {
+            return redirect('/');
+        }
+
+        return view(
+            'product.edit',
+            compact('product')
+        );
     }
 
-    // ================== UPDATE PRODUCT ==================
-    public function update(Request $request, Product $product)
-    {
+    public function update(
+        Request $request,
+        Product $product
+    ) {
+        if (
+            !session()->has('user') ||
+            session('user')->role != 'admin'
+        ) {
+            return redirect('/');
+        }
+
         $product->update([
             'name' => $request->name,
             'points' => $request->points,
@@ -146,13 +212,23 @@ class RewardController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('product.index')
-            ->with('success', 'Produk berhasil diupdate');
+        return redirect()
+            ->route('product.index')
+            ->with(
+                'success',
+                'Produk berhasil diupdate'
+            );
     }
 
-    // ================== HAPUS PRODUCT ==================
     public function destroy(Product $product)
     {
+        if (
+            !session()->has('user') ||
+            session('user')->role != 'admin'
+        ) {
+            return redirect('/');
+        }
+
         $product->delete();
 
         return back()->with(

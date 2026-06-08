@@ -604,3 +604,225 @@ body {
 .nav-dropdown-menu li:not(:last-child) {
     border-bottom: 1px solid rgba(255,255,255,0.07) !important;
 }
+
+/* ============================================
+   ANIMASI — tempel di paling bawah home.css
+   ============================================ */
+
+/* ── KEYFRAMES ────────────────────────────────── */
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDownFade {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── HERO — muncul otomatis saat load ─────────── */
+.overlay h2 {
+    opacity: 0;
+    animation: slideDownFade 0.6s ease forwards;
+    animation-delay: 0.1s;
+}
+
+.overlay h1 {
+    opacity: 0;
+    animation: slideUpFade 0.7s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.overlay > p {
+    opacity: 0;
+    animation: slideUpFade 0.7s ease forwards;
+    animation-delay: 0.5s;
+}
+
+.hero-buttons {
+    opacity: 0;
+    animation: slideUpFade 0.7s ease forwards;
+    animation-delay: 0.7s;
+}
+
+/* ── SCROLL REVEAL — sembunyikan sebelum terlihat */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ============================================
+   NAVBAR ENHANCEMENTS — tempel di bawah home.css
+   ============================================ */
+
+/* ── NAVBAR LINK HOVER EFFECT ─────────────────── */
+.navbar ul li a {
+    position: relative;
+    padding-bottom: 3px;
+}
+
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #a8d890;
+    border-radius: 2px;
+    transition: width 0.25s ease;
+}
+
+.navbar ul li a:hover::after {
+    width: 100%;
+}
+
+.navbar ul li a:hover {
+    color: #a8d890 !important;
+}
+
+/* ── ACTIVE PAGE INDICATOR ────────────────────── */
+.navbar ul li a.active {
+    color: #a8d890 !important;
+}
+
+.navbar ul li a.active::after {
+    width: 100%;
+}
+
+/* ── POINTS BADGE ─────────────────────────────── */
+.points-nav {
+    background: rgba(74,140,63,0.20);
+    border: 1px solid rgba(168,216,144,0.35);
+    border-radius: 50px !important;
+    padding: 4px 14px !important;
+    font-family: 'Sora', sans-serif !important;
+    font-size: 0.80rem !important;
+    font-weight: 700 !important;
+    color: #a8d890 !important;
+    letter-spacing: 0.03em;
+    transition: background 0.2s !important;
+    cursor: default !important;
+    display: flex !important;
+    align-items: center !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+}
+
+.points-nav:hover {
+    background: rgba(74,140,63,0.32) !important;
+}
+
+/* ── DROPDOWN LINK RIPPLE ─────────────────────── */
+.nav-dropdown > a {
+    transition: color 0.2s;
+}
+
+.nav-dropdown > a:hover {
+    color: #a8d890 !important;
+}
+
+/* Aktif saat dropdown terbuka */
+.nav-dropdown:has(.open) > a {
+    color: #a8d890 !important;
+}
+
+.nav-dropdown:has(.open) > a::after {
+    width: 100%;
+}
+
+/* ── DROPDOWN MENU ────────────────────────────── */
+.nav-dropdown-menu {
+    display: none !important;
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(14, 28, 12, 0.98);
+    border: 1px solid rgba(168,216,144,0.18);
+    border-radius: 12px;
+    padding: 6px;
+    min-width: 200px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.32), 0 0 0 1px rgba(255,255,255,0.04);
+    list-style: none;
+    z-index: 200;
+    backdrop-filter: blur(12px);
+}
+
+/* Arrow kecil di atas dropdown */
+.nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: rgba(14, 28, 12, 0.98);
+    border-left: 1px solid rgba(168,216,144,0.18);
+    border-top: 1px solid rgba(168,216,144,0.18);
+    rotate: 45deg;
+}
+
+.nav-dropdown-menu.open {
+    display: block !important;
+    animation: dropIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes dropIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(-10px) scale(0.95); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+.nav-dropdown-menu li {
+    color: unset !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+    font-size: unset !important;
+}
+
+.nav-dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.80) !important;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s, transform 0.15s;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+}
+
+/* Icon otomatis tiap item */
+.nav-dropdown-menu li:nth-child(1) a::before { content: '🌿'; font-size: 0.9rem; }
+.nav-dropdown-menu li:nth-child(2) a::before { content: '📋'; font-size: 0.9rem; }
+
+.nav-dropdown-menu li a::after {
+    display: none !important; /* matikan underline effect di dalam dropdown */
+}
+
+.nav-dropdown-menu li a:hover {
+    background: rgba(74,140,63,0.22) !important;
+    color: #a8d890 !important;
+    transform: translateX(3px);
+}
+
+.nav-dropdown-menu li:not(:last-child) {
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}

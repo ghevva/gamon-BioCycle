@@ -23,8 +23,18 @@ class AuthController extends Controller
             return back()->with('error', 'Email atau password salah');
         }
 
-        session(['user' => $user]);
+        session([
+            'user' => $user
+        ]);
 
+        // LOGIN ADMIN
+        if ($user->role == 'admin') {
+
+            return redirect()
+                ->route('product.index');
+        }
+
+        // LOGIN USER
         return redirect('/');
     }
 
@@ -59,6 +69,10 @@ class AuthController extends Controller
     {
         if (!session('user')) {
             return redirect('/login');
+        }
+
+        if (session('user')->role == 'admin') {
+            return redirect()->route('product.index');
         }
 
         return view('profile');

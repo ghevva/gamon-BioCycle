@@ -32,7 +32,7 @@
             <button type="submit">Login</button>
         </form>
 
-        <a href="/register">Belum punya akun? Daftar</a>
+        <a href="/register">Belum punya akun? Sign Up</a>
 
     </div>
 </div>

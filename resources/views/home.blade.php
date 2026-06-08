@@ -33,17 +33,17 @@
 
 <!-- FITUR ICON -->
 <section class="features">
-    <div>EcoValue</div>
-    <div>CleanGain</div>
-    <div>RecyPoint</div>
-    <div>GreenEarn</div>
-    <div>WasteWise</div>
+    <div class="reveal reveal-delay-1">EcoValue</div>
+    <div class="reveal reveal-delay-2">CleanGain</div>
+    <div class="reveal reveal-delay-3">RecyPoint</div>
+    <div class="reveal reveal-delay-4">GreenEarn</div>
+    <div class="reveal reveal-delay-5">WasteWise</div>
 </section>
 
 <!-- SECTION EDUKASI -->
 <section class="about">
-    <div class="about-img"></div>
-    <div class="about-text">
+    <div class="about-img reveal"></div>
+    <div class="about-text reveal reveal-delay-2">
         <h2>Kenapa pengelolahan sampah harus menjadi masalah?</h2>
         <p>
             Sampah plastik terus meningkat setiap tahunnya.
@@ -54,5 +54,18 @@
 </section>
 
 @include('layouts.footer')
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>

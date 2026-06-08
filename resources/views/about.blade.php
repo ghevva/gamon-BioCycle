@@ -23,7 +23,6 @@
             dan bisa ditukar dengan berbagai manfaat. Prosesnya cepat, rapi, dan transparan.
         </p>
 
-        <!-- Visi -->
         <div class="about-block">
             <h3>Visi</h3>
             <ul>
@@ -32,7 +31,6 @@
             </ul>
         </div>
 
-        <!-- Misi -->
         <div class="about-block">
             <h3>Misi</h3>
             <ul>
@@ -41,7 +39,6 @@
             </ul>
         </div>
 
-        <!-- Developer -->
         <div class="about-block">
             <h3>Developer</h3>
             <ul>
@@ -55,20 +52,20 @@
 
 <!-- ── FEATURES BAR ──────────────────────────── -->
 <section class="features">
-    <div>EcoValue</div>
-    <div>CleanGain</div>
-    <div>RecyPoint</div>
-    <div>GreenEarn</div>
-    <div>WasteWise</div>
+    <div class="reveal reveal-delay-1">EcoValue</div>
+    <div class="reveal reveal-delay-2">CleanGain</div>
+    <div class="reveal reveal-delay-3">RecyPoint</div>
+    <div class="reveal reveal-delay-4">GreenEarn</div>
+    <div class="reveal reveal-delay-4">WasteWise</div>
 </section>
 
 <!-- ── KENAPA KAMI ───────────────────────────── -->
 <section class="about-why">
     <div class="about-why-inner">
 
-        <div class="about-why-img"></div>
+        <div class="about-why-img reveal-left"></div>
 
-        <div class="about-why-text">
+        <div class="about-why-text reveal-right">
             <h2>Mengapa Kami Membuat Website Ini</h2>
             <ul>
                 <li>Banyak sampah plastik tidak terkelola.</li>
@@ -91,12 +88,24 @@
 <!-- ── TAGLINE ───────────────────────────────── -->
 <section class="about-tagline">
     <div class="about-tagline-inner">
-        <h2>BioCycle Menjamin Kemudahan Pengelolahan Sampahmu</h2>
-        <p>Tidak ada alasan untuk tidak peduli terhadap kesehatan lingkungan. Sayangi dirimu dan tempat yang kamu gunakan untuk berpijak.</p>
+        <h2 class="reveal-left">BioCycle Menjamin Kemudahan Pengelolahan Sampahmu</h2>
+        <p class="reveal-right reveal-delay-2">Tidak ada alasan untuk tidak peduli terhadap kesehatan lingkungan. Sayangi dirimu dan tempat yang kamu gunakan untuk berpijak.</p>
     </div>
 </section>
 
 @include('layouts.footer')
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>

@@ -23,7 +23,6 @@ body {
 }
 
 /* ── PILIH JENIS CARD ─────────────────────────── */
-
 .booking-selector {
     background: rgba(232, 245, 225, 0.92);
     border: 2px solid rgba(100,180,80,0.40);
@@ -86,8 +85,6 @@ body {
     padding: 10px 8px;
     letter-spacing: 0.03em;
 }
-
-/* ── FEATURES BAR (sudah di home.css, ini override warna bg) ── */
 
 /* ── RIWAYAT SECTION ──────────────────────────── */
 .booking-history {
@@ -185,7 +182,7 @@ body {
     font-weight: 400;
 }
 
-/* Status badge (opsional) */
+/* Status badge */
 .booking-status {
     display: inline-flex;
     align-items: center;
@@ -235,3 +232,60 @@ body {
         padding: 28px 16px 50px;
     }
 }
+
+/* ══════════════════════════════════════════════
+   ANIMASI — konsisten dengan about.css
+   ══════════════════════════════════════════════ */
+
+/* ── KEYFRAMES ────────────────────────────────── */
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleFade {
+    from { opacity: 0; transform: scale(0.94); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── HERO CARD — muncul saat load ────────────── */
+.booking-selector {
+    opacity: 0;
+    animation: scaleFade 0.7s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.booking-selector h3 {
+    opacity: 0;
+    animation: fadeSlideUp 0.5s ease forwards;
+    animation-delay: 0.45s;
+}
+
+.booking-choice:nth-child(1) {
+    opacity: 0;
+    animation: fadeSlideUp 0.5s ease forwards;
+    animation-delay: 0.60s;
+}
+
+.booking-choice:nth-child(2) {
+    opacity: 0;
+    animation: fadeSlideUp 0.5s ease forwards;
+    animation-delay: 0.75s;
+}
+
+/* ── SCROLL REVEAL ────────────────────────────── */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }

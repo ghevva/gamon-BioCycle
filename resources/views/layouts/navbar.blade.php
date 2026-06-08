@@ -5,22 +5,22 @@
     </div>
 
     <ul>
-        <li><a href="/">Beranda</a></li>
+        <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">Beranda</a></li>
 
         <li>
-            <a href="{{ route('about.page') }}">
+            <a href="{{ route('about.page') }}" class="{{ request()->routeIs('about.page') ? 'active' : '' }}">
                 Informasi
             </a>
         </li>
 
         <li>
-            <a href="{{ route('booking.page') }}">
+            <a href="{{ route('booking.page') }}" class="{{ request()->routeIs('booking.page') ? 'active' : '' }}">
                 Booking
             </a>
         </li>
 
         <li class="nav-dropdown" onclick="toggleDropdown(this)">
-            <a href="#">Tukar Poin ▾</a>
+            <a href="#" class="{{ request()->routeIs('reward.*') ? 'active' : '' }}">Tukar Poin ▾</a>
             <ul class="nav-dropdown-menu">
                 <li><a href="{{ route('reward.index') }}">Tukar Poin</a></li>
                 <li><a href="{{ route('reward.history') }}">Riwayat Penukaran</a></li>
@@ -29,15 +29,15 @@
 
         @if(session('user'))
 
-            <li><a href="/profile">Profil</a></li>
+            <li><a href="/profile" class="{{ request()->is('profile') ? 'active' : '' }}">Profil</a></li>
 
             <li class="points-nav">
                 ⭐ {{ session('user')->points ?? 0 }} Poin
             </li>
 
         @else
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Sign up</a></li>
+            <li><a href="/login" class="{{ request()->is('login') ? 'active' : '' }}">Log in</a></li>
+            <li><a href="/register" class="{{ request()->is('register') ? 'active' : '' }}">Sign Up</a></li>
         @endif
     </ul>
 </nav>

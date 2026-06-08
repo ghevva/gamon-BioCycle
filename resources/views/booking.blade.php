@@ -17,13 +17,11 @@
 
         <div class="booking-choices">
 
-            <!-- Minyak Jelantah -->
             <a href="{{ route('booking.create') }}?type=minyak" class="booking-choice">
                 <img src="{{ asset('/images/image_5.png') }}" alt="Minyak Jelantah">
                 <div class="booking-choice-label">Minyak Jelantah</div>
             </a>
 
-            <!-- Limbah Plastik -->
             <a href="{{ route('booking.create') }}?type=plastik" class="booking-choice">
                 <img src="{{ asset('/images/image_4.png') }}" alt="Limbah Plastik">
                 <div class="booking-choice-label">Limbah Plastik</div>
@@ -34,7 +32,7 @@
 </section>
 
 <!-- ── FEATURES BAR ──────────────────────────── -->
-<section class="features">
+<section class="features reveal">
     <div>EcoValue</div>
     <div>CleanGain</div>
     <div>RecyPoint</div>
@@ -45,29 +43,26 @@
 <!-- ── RIWAYAT BOOKING ───────────────────────── -->
 <div class="booking-history">
 
-    <div class="booking-history-header">
+    <div class="booking-history-header reveal">
         <h3>Semua Riwayat Booking</h3>
         <span>▼</span>
     </div>
 
     @if($bookings->count())
 
-        @foreach($bookings as $b)
+        @foreach($bookings as $index => $b)
 
-        <div class="booking-card">
+        @php $delay = ($index % 4) + 1; @endphp
 
-            <!-- Tipe di atas -->
+        <div class="booking-card reveal reveal-delay-{{ $delay }}">
+
             <div class="booking-card-type">
-
                 <span class="type-label">Jenis</span>
-
                 <span class="type-value">
                     {{ $b->type == 'minyak' ? 'Minyak Jelantah' : 'Limbah Plastik' }}
                 </span>
-
             </div>
 
-            <!-- Detail -->
             <div class="booking-card-body">
 
                 <div class="booking-field">
@@ -76,78 +71,47 @@
                 </div>
 
                 @if($b->type == 'minyak')
-
                 <div class="booking-field">
                     <span class="booking-field-label">Volume (Liter)</span>
-
-                    <span class="booking-field-value">
-                        {{ $b->volume }} liter
-                    </span>
+                    <span class="booking-field-value">{{ $b->volume }} liter</span>
                 </div>
-
                 @else
-
                 <div class="booking-field">
                     <span class="booking-field-label">Berat (Kg)</span>
-
-                    <span class="booking-field-value">
-                        {{ $b->weight }} kg
-                    </span>
+                    <span class="booking-field-value">{{ $b->weight }} kg</span>
                 </div>
-
                 @endif
 
                 <div class="booking-field">
-                    <span class="booking-field-label">
-                        Tanggal & Waktu Kedatangan
-                    </span>
-
-                    <span class="booking-field-value">
-                        {{ $b->date }} / Pukul {{ $b->time }} WIB.
-                    </span>
+                    <span class="booking-field-label">Tanggal & Waktu Kedatangan</span>
+                    <span class="booking-field-value">{{ $b->date }} / Pukul {{ $b->time }} WIB.</span>
                 </div>
 
-                <!-- NOMOR ANTRIAN -->
                 <div class="booking-field">
                     <span class="booking-field-label">Nomor Antrian</span>
-
-                    <span class="booking-field-value">
-                        #{{ $b->queue_number }}
-                    </span>
+                    <span class="booking-field-value">#{{ $b->queue_number }}</span>
                 </div>
 
-                <!-- STATUS POIN -->
                 @if($b->status == 'approved')
-
                 <div class="booking-field">
                     <span class="booking-field-label">Poin Didapat</span>
-
-                    <span class="booking-field-value">
-                        +{{ $b->final_amount * 5 }} poin ⭐
-                    </span>
+                    <span class="booking-field-value">+{{ $b->final_amount * 5 }} poin ⭐</span>
                 </div>
-
                 @else
-
                 <div class="booking-field">
                     <span class="booking-field-label">Status</span>
-
-                    <span class="booking-field-value">
-                        Menunggu ACC Admin
-                    </span>
+                    <span class="booking-field-value">Menunggu ACC Admin</span>
                 </div>
-
                 @endif
 
             </div>
-
         </div>
 
         @endforeach
 
     @else
 
-        <div class="booking-empty">
+        <div class="booking-empty reveal">
             <span>📭</span>
             Belum ada riwayat booking.
         </div>
@@ -157,6 +121,25 @@
 </div>
 
 @include('layouts.footer')
+
+<script>
+/* ── SCROLL REVEAL ── */
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+});
+
+document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+});
+</script>
 
 </body>
 </html>
